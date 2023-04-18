@@ -1,5 +1,15 @@
 <h1>Editing Book</h1>
 
+<!--バリデーションのエラー部分-->
+<% if @book.errors.any? %>
+  <%= @book.errors.count %> errors have occured.
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @book do |f| %>
 
 <p>Title</p>
@@ -12,5 +22,5 @@
 
 <% end %>
 </br>
-<%= link_to "Edit", edit_book_path(@book.id) %> | 
+<%= link_to "Show", book_path(@book.id) %> | 
 <%= link_to "Back", books_path %>

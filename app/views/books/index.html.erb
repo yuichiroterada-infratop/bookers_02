@@ -1,4 +1,13 @@
 <h1>Books</h1>
+<!--バリデーションのエラー部分-->
+<% if @book.errors.any? %>
+  <%= @book.errors.count %> errors have occured.
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <!--以下、投稿一覧画面-->
 <table>
   <thead>
