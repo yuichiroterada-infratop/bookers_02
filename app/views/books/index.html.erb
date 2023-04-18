@@ -11,12 +11,12 @@
   <tbody>
   <% @books.each do |book| %>
   <tr>
-    <td>book.title</td>
-    <td>book.bosy</td>
+    <td> <%= book.title %></td>
+    <td><%= book.body %></td>
     <td>
       <%= link_to "Show", book_path(book.id) %>
       <%= link_to "Edit", edit_book_path(book.id) %>
-      <%= link_to "Destroy", book_path(book.id), method: :delete %>
+      <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %>
     </td>
   </tr>
   <% end %>
@@ -24,3 +24,16 @@
 </table>
 
 <!--以下、新規投稿画面-->
+<h1>New book</h1>
+<%= form_with model: @book do |f| %>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+  
+  <h4>Body</h4>
+  <%= f.text_area :body %></br>
+  
+  <%= f.submit "Create Book" %>
+  
+<% end %>
+
+
